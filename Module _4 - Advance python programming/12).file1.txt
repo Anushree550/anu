@@ -1,0 +1,4 @@
+Python is new generation language.
+It is an interpreted object-oriented language.
+It was designed by Guido Van Rossum in 1991.
+Developed by python software foundation.
