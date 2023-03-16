@@ -1,0 +1,188 @@
+MODULE-5
+
+1.Why Django should be used for web-development? Explain how you
+can create a project in Django?
+
+->Fast and efficient development: Django provides a lot of built-in tools and functionalities, which makes web development faster and more efficient.
+
+Security: Django provides a lot of built-in security features to protect against common web security threats such as SQL injection and cross-site scripting (XSS).
+
+Scalability: Django is designed to be scalable, which means that it can handle large amounts of traffic and data without slowing down.
+
+Versatility: Django is a versatile framework that can be used to build a wide range of web applications, from simple websites to complex web applications.
+
+..... how to create a project in Django:
+
+Step 1: Install Django
+To start with Django, you need to have it installed on your system. You can install Django using pip by running the following command:
+
+pip install Django
+
+Step 2: Create a Django project
+Once Django is installed, you can create a new Django project by running the following command:
+
+django-admin startproject project_name
+
+Replace "project_name" with the name of your project. This will create a new Django project with the name you specified.
+
+Step 3: Create a Django app
+In Django, a project is made up of one or more apps. An app is a web application that performs a specific function. To create a new app, run the following command:
+
+python manage.py startapp app_name
+
+Replace "app_name" with the name of your app. This will create a new Django app with the name you specified.
+
+Step 4: Configure the database
+By default, Django uses SQLite as its database. If you want to use a different database, you need to configure it in the settings.py file of your project.
+
+Step 5: Create models
+In Django, a model is a Python class that represents a database table. To create a new model, define a new class in the models.py file of your app.
+
+Step 6: Create views
+In Django, a view is a Python function that handles a web request and returns a web response. To create a new view, define a new function in the views.py file of your app.
+
+Step 7: Define your URLs:
+Finally, you'll need to define your URLs, which are the URLs that map to your views. Open the urls.py file in your app directory and define your URLs.
+
+These are the basic steps for creating a project in Django. From here, you can continue building your app by creating templates, writing tests, and adding more functionality
+
+
+2. How to check installed version of django?
+->To check the installed version of Django, you can open up a terminal or command prompt and enter the following command:
+
+code:
+django-admin version
+
+Alternatively, you can also use the following command:
+
+code:
+python -m django --version
+
+Both of these commands should output the version number of Django that is currently installed on your system.
+
+
+3. Explain what does django-admin.py make messages command is used for? 
+->The django-admin.py make-messages command is used in Django to create or update message files (.po files) for internationalization (i18n) and localization (l10n) purposes.The make-messages command creates or updates message files based on the source code of the Django project. This command scans all the source code files, templates, and other files in the project and extracts all the user-facing strings into a message file. The message file contains a unique identifier for each string, as well as the string itself.
+
+4. What is Django URLs?make program to create django urls.
+-> URLs (Uniform Resource Locators) are used to map incoming HTTP requests to the appropriate view function in the Django application. URLs provide a way for users to navigate to different pages in a web application and for developers to define the logical structure of the application.
+
+To create a Django URL, you need to define a mapping between a URL pattern and a view function.
+
+program:
+.Open up the urls.py file in your Django application.
+.Import the path function from the django.urls module:
+code:
+from django.urls import path
+Define the URL pattern by calling the path function with two arguments:
+ code:
+urlpatterns = [
+    path('hello/', views.hello_world),
+]
+In this example, the URL pattern is 'hello/', which will match any URL that ends with /hello/. The second argument is the view function that should be called when the URL pattern is matched.
+
+Define the view function that should be called when the URL pattern is matched:
+code:
+def hello_world(request):
+    return HttpResponse('Hello, World!')
+This view function will simply return the string 'Hello, World!' as an HTTP response when it is called.
+
+Finally, include the urls.py file in your project's main urls.py file:
+code:
+from django.urls import include, path
+
+urlpatterns = [
+    path('hello/', views.hello_world),
+    # Include other URL patterns here
+]
+
+5. What is a QuerySet?Write program to create a new Post object in
+   database:
+->In Django, a QuerySet is a collection of database query results that represents a subset of the data stored in a database table. QuerySets are used to query the database to retrieve, filter, and sort data, and they can be further refined to perform more complex operations.
+
+from myapp.models import Post
+
+# Create a new Post object
+post = Post.objects.create(
+    title='My New Post',
+    content='This is the content of my new post.',
+    pub_date=timezone.now()
+)
+
+# Save the object to the database
+post.save()
+
+# Print the object's ID
+print(f'Created post with ID {post.id}')
+
+6. Mention what command line can be used to load data into Django?
+
+->The loaddata command is run using the manage.py script and takes the name of the fixture file as an argument.
+  The loaddata command will read the fixture file and insert the data into the corresponding database tables. If there are any conflicts or errors during the loading process, the command will display an error message.
+
+7. Explain what does django-admin.py make messages command is used
+   for?
+->Answer in question-3
+
+8. Make Django application to demonstrate following things o There will
+be 2 modules(Admin,Product manager) o Admin can add product name
+(ex.Product id and product name) ex. (1, Samsung), (2, Apple)...etc.
+Data should store in.
+->1)First, create a new Django project and a new app named myapp.
+
+ django-admin startproject myproject
+ cd myproject
+ python manage.py startapp myapp
+2)Define the Product model in the models.py file of the myapp app. The Product model has two fields: id and name.
+# myapp/models.py
+
+from django.db import models
+
+class Product(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+3)Create a migration for the Product model and apply it to the database.
+
+python manage.py makemigrations myapp
+python manage.py migrate
+4)Define the views for the Admin and Product Manager modules in the views.py file of the myapp app. 
+# myapp/views.py
+
+from django.shortcuts import render
+from myapp.models import Product
+
+def admin_view(request):
+    if request.method == 'POST':
+        # Get the product ID and name from the form
+        product_id = request.POST['id']
+        product_name = request.POST['name']
+
+        # Create a new Product object and save it to the database
+        product = Product(id=product_id, name=product_name)
+        product.save()
+
+        # Redirect to the product manager page
+        return redirect('product_manager')
+
+    return render(request, 'admin.html')
+
+def product_manager_view(request):
+    products = Product.objects.all()
+    return render(request, 'product_manager.html', {'products': products})
+5)Define the URL patterns for the Admin and Product Manager modules in the urls.py file of the myapp app.
+# myapp/urls.py
+
+from django.urls import path
+from myapp.views import admin_view, product_manager_view
+
+urlpatterns = [
+    path('admin/', admin_view, name='admin'),
+    path('product-manager/', product_manager_view, name='product_manager'),
+]
+
+
+
+
