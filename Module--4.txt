@@ -1,0 +1,170 @@
+What is File function in python? What is keywords to create and write file.
+->Python file object provides methods and attributes to access and manipulate files. Using file objects, we can read or write any files. Whenever we open a file to perform any operations on it, Python returns a file object. To create a file object in Python use the built-in functions, such as open(). 
+The open() function takes two arguments: the file path (as a string) and the mode in which the file should be opened (also as a string).
+
+Write a Python program to read an entire text file.
+->Example:
+filename = "example.txt" # Replace with the name of your file
+
+with open(filename, "r") as file:
+    contents = file.read()
+    print(contents)
+
+Write a Python program to append text to a file and display the text.
+->filename = "example.txt" # Replace with the name of your file
+
+# Append some text to the file
+with open(filename, "a") as file:
+    file.write("This is some appended text.")
+
+# Read the contents of the file and print them
+with open(filename, "r") as file:
+    contents = file.read()
+    print(contents)
+
+Write a Python program to read first n lines of a file.
+->lines = f.read().splitlines()
+  print(lines)
+
+Write a Python program to read last n lines of a file.
+->lines = f.read().splitlines()
+print(lines)
+print(lines[-1])
+
+Write a Python program to read a file line by line and store it into a list.
+->filename = "example.txt" 
+
+lines = []
+
+with open(filename, "r") as file:
+    for line in file:
+        lines.append(line.strip()) 
+print(lines) 
+
+Write a Python program to read a file line by line store it into a variable.
+->str = f.read()
+print(str)
+
+Write a python program to find the longest words.
+->for word in words:
+    if len(word) > max_length:
+        longest_words = [word]
+        max_length = len(word)
+    elif len(word) == max_length:
+        longest_words.append(word)
+
+print("The longest words in the file are:", longest_words)
+print("They have length", max_length)
+
+Write a Python program to count the number of lines in a text file.
+->filename = "example.txt"
+
+lines = len(f.readlines())
+print("Total Number of lines : ", lines)
+
+Write a Python program to count the frequency of words in a file.
+->count = 0
+filename = "example.txt"
+
+for line in f:
+    word = line.split()
+    count += len(word)
+print("Total Number Of Words : ", count)
+
+Write a Python program to write a list to a file.
+->filename = "example.txt" 
+my_list = ["apple", "banana", "cherry", "date"] 
+
+with open(filename, "a") as file:
+    for item in my_list:
+    file.writelines(items)
+    file.close()
+
+Write a Python program to copy the contents of a file to another file.
+->filename 1 = "example.txt"
+  filename 2= "example.txt"
+
+
+for line in f1:
+    f2.write(line) 
+ 
+Explain Exception handling? What is an Error in Python?
+->Exception handling is a mechanism in Python that allows programmers to handle errors or unexpected events that occur during the execution of a program. When an error or exception occurs, Python raises an exception object, which contains information about the error, such as its type and message. By using exception handling, you can catch and handle these exception objects, which can help you to gracefully handle errors and prevent your program from crashing.
+
+In Python, an error is an unexpected or exceptional condition that occurs during the execution of a program. There are many different types of errors that can occur in Python, such as syntax errors, runtime errors, and logical errors. Syntax errors occur when you have a typo or other mistake in your code that violates the rules of the Python language. Runtime errors occur when your program encounters an error during execution, such as trying to access an undefined variable or attempting to divide by zero
+
+How many except statements can a try-except block have? Name Some built-in exception classes:
+->A try-except block can have multiple except statements to handle different types of exceptions. The syntax for a try-except block with multiple except statements
+ the except block(s) contain the code that will be executed if an exception of the corresponding type is raised. You can have as many except blocks as you need, each  with its own ExceptionType, to handle different types of exceptions.
+
+When will the else part of try-except-else be executed?
+-> The else block is executed if and only if the try block completes successfully without raising any exceptions.Else code is executed if no exception occurs
+
+Can one block of except statements handle multiple exception?
+->Yes,it is possible to use a single except block to handle multiple types of exceptions. To do this, you can specify multiple exception types as arguments to the except keyword, separated by commas.
+
+When is the finally block executed?
+->The finally block in a try-except-finally statement in Python is executed after the try block and any matching except blocks are executed, regardless of whether an exception was raised or caught. The finally block is guaranteed to be executed even if there is a return statement or an uncaught exception within the try or except blocks. 
+
+What happens when „1‟== 1 is executed?
+-> It simply evaluates to false and does not raise any exception.
+
+How Do You Handle Exceptions With Try/Except/Finally In Python?Explain with coding snippets.
+-> Exceptions can be handled using the try, except, and finally statements. The try block contains the code that may raise an exception, the except block catches the exception and provides a way to handle it, and the finally block contains the code that will always be executed, regardless of whether an exception was raised or caught.
+try:
+    x = 10 / 0
+except ZeroDivisionError
+    print("Error: division by zero")
+finally:
+    print("This will always be executed")
+
+Write python program that user to enter only odd numbers, else will raise an exception.
+->while True:
+    try:
+        num = int(input("Enter an odd number: "))
+        if num % 2 == 0:
+            raise ValueError("You must enter an odd number")
+        break
+    except ValueError as a:
+        print(a)
+
+What are oops concepts? Is multiple inheritance supported in java
+->Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects that contain data and methods. OOPS focuses on concepts such as abstraction, encapsulation, inheritance, and polymorphism to help developers build reusable and maintainable code.
+
+.Java supports multiple inheritance for interfaces, but not for classes. In Java, a class can only extend one superclass, but it can implement multiple interfaces. This design decision was made to prevent issues such as the diamond problem, which can occur when a subclass inherits from two or more classes that have the same method name and signature. 
+
+How to Define a Class in Python? What Is Self? Give An Example Of A Python Class
+->To define a class in Python, you use the class keyword followed by the name of the class. Inside the class, you define methods and attributes that will be associated with objects created from the class. 
+The self keyword refers to the object that the method is being called on. When a method is called on an object, Python automatically passes in the object as the first argument to the method using the self parameter. 
+
+Write a Python class named Rectangle constructed by a length and width and a method which will compute the area of a rectangle
+->class Rectangle:
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+
+Write a Python class named Circle constructed by a radius and two methods which will compute the area and the perimeter of a circle.
+->class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return 3.14159 * (self.radius ** 2)
+    
+    def perimeter(self):
+        return 2 * 3.14159 * self.radius
+
+Explain Inheritance in Python with an example? What is init? Or What Is A Constructor In Python?
+->Inheritance is a key feature of OOPs that allows a new class to be based on an existing class. The new class, called the subclass or derived class, inherits attributes and behaviors from the existing class, called the superclass or base class. The subclass can also add new attributes and behaviors or override existing ones.
+A constructor is a special method called __init__ that is called when an object is created from a class. The constructor initializes the attributes of the object with any values that are passed as arguments when the object is created.
+
+What is Instantiation in terms of OOP terminology?
+->nstantiation is the process of creating an instance or object of a class in object-oriented programming (OOP) terminology. When a class is defined, it serves as a blueprint or template for creating objects. An object is an instance of a class that has its own unique set of attributes and methods.
+To create an instance of a class, we use the class name followed by parentheses, like a function call.
+
+What is used to check whether an object o is an instance of class A?
+->The isinstance() function returns True if the specified object is of the specified type, otherwise False . If the type parameter is a tuple, this function will return True if the object is one of the types in the tuple.
+
