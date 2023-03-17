@@ -1,0 +1,62 @@
+DIGITAL SOCIETY
+
+
+-----------------------------
+Chairman : 
+
+-> login 
+-> forgot password (via email) 
+-> profile manage - profile picture and password updation 
+-> logout 
+-> session manage 
+
+-> chairman can add rules 
+-> can add notice 
+-> can manage notice (edit , delete) 
+-> can add events 
+-> can manage events (edit, delete) 
+
+
+-> can view notice viewer and when 
+-> can view events viewer and when 
+
+-> can add society member (auto password generation send via email) 
+-> can view all society members and manage 
+
+-> can manage complaint box 
+-> maintainance
+
+--------------------------------------
+
+Society member 
+
+-> first time login (change password) 
+-> profile manage 
+-> can add complaint 
+-> can view notice 
+-> can view events 
+-> can add suggestion 
+-> maintainance payment 
+-> event apply - request 
+-> can add post for hourse rent and sale 
+
+-----------------------------------------------
+->whatchman 
+
+-> registration 
+-> login 
+-> change password 
+-> add add visitor details 
+
+-----------------------------------
+
+
+
+
+
+
+
+
+
+
+
